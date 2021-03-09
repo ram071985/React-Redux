@@ -1,16 +1,5 @@
 import axios from 'axios';
 
-const action = {
-  type: "apiCallBegan",
-  payload: {
-    url: "/bugs",
-    method: "get",
-    data: {},
-    onSuccess: "bugsReceived",
-    onError: "apiRequestFailed",
-  },
-};
-
 const api = ({ dispatch }) => next => async action => {
   if (action.type !== "apiCallBegan") {
     return next(action);

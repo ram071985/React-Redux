@@ -3,8 +3,6 @@ import bugs, { loadBugs } from "../store/bugs";
 import { connect } from 'react-redux';
 
 class Bugs extends Component {
-  static contextType = StoreContext;
-
   componentDidMount() {
    this.props.loadBugs();
   }

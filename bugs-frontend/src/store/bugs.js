@@ -1,12 +1,18 @@
 // Action types
 import { createSlice } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
+import { apiCallBegan } from './api';
+import moment from 'moment';
 
 let lastId = 0;
 
 const slice = createSlice({
   name: "bugs",
-  initialState: [],
+  initialState: {
+    list: [],
+    loading: false,
+    lastFetch: null
+  },
   reducers: {
     bugsRequested: (bugs, action) => {
       bugs.loading = true;
@@ -19,12 +25,12 @@ const slice = createSlice({
 
     bugAssignedToUser: (bugs, action) => {
       const { bugId, userId } = action.payload;
-      const index = bugs.findIndex((bug) => bug.id === bugId);
-      bugs[index].userId = userId;
+      const index = bugs.list.findIndex((bug) => bug.id === bugId);
+      bugs.list[index].userId = userId;
     },
 
     bugAdded: (bugs, action) => {
-      bugs.push({
+      bugs.list.push({
         id: ++lastId,
         description: action.payload.description,
         resolved: false,
@@ -32,8 +38,8 @@ const slice = createSlice({
     },
 
     bugResolved: (bugs, action) => {
-      const index = bugs.findIndex((bug) => bug.id === action.payload.id);
-      bugs[index].resolved = true;
+      const index = bugs.list.findIndex((bug) => bug.id === action.payload.id);
+      bugs.list[index].resolved = true;
     },
   },
 });
@@ -50,6 +56,7 @@ export const loadBugs = () =>
     onSuccess: bugsReceived.type
   })
 
+  export const addBug = 
 // Memoization
 // f(x) => y { input: 1, output: 2 }
 export const getUnresolvedBugs = createSelector(
