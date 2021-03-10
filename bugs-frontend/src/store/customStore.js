@@ -1,4 +1,4 @@
-import reducer from "../reducer";
+import reducer from "./reducer";
 
 function createStore(reducer) {
   let state;
@@ -21,7 +21,7 @@ function createStore(reducer) {
   return {
     subscribe,
     dispatch,
-    getState,
+    getState
   };
 }
 
