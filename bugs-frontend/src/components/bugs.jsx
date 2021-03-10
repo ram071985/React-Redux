@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import bugs, { loadBugs } from "../store/bugs";
+import { loadBugs } from "../store/bugs";
 import { connect } from 'react-redux';
 
 class Bugs extends Component {
@@ -18,7 +18,7 @@ class Bugs extends Component {
 }
 // bugs: state.entities.bugs.list
 const mapStateToProps = state => ({
-  bugs: bugs.state.entities.bugs.list
+  bugs: state.entities.bugs.list
 })
 
 const mapDispatchToProps = dispatch => ({

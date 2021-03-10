@@ -68,7 +68,7 @@ export const loadBugs = () => (dispatch, getState) => {
       url,
       onStart: bugsRequested.type,
       onSuccess: bugsReceived.type,
-      onError: bugsRequestFailed,
+      onError: bugsRequestFailed.type,
     })
   );
 };
