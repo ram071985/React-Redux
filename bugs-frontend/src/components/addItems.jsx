@@ -16,7 +16,7 @@ const Items = () => {
       <div>
     <form >
       <input></input>
-      <button onClick={(item) => dispatch(addItem(item.description = "Item 4"))}type="submit">
+      <button onClick={(item) => dispatch(addItem(item.description))}type="submit">
         PUSH
       </button>
     </form>

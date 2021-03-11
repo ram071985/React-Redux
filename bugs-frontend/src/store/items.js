@@ -30,6 +30,7 @@ const slice = createSlice({
       items.list.push(action.payload);
     },
   },
+  
 });
 
 export const {
@@ -46,7 +47,7 @@ const url = "/items";
 
 export const loadItems = () => (dispatch, getState) => {
   const { lastFetch } = getState().entities.items;
-
+  console.log(getState().entities);
   const diffInMinutes = moment().diff(moment(lastFetch), "minutes");
   if (diffInMinutes < 10) return;
 
