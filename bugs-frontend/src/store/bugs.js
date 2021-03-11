@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSelector } from "reselect";
-import axios from "axios";
 import { apiCallBegan } from "./api";
 import moment from "moment";
 
@@ -37,13 +36,14 @@ const slice = createSlice({
     bugAdded: (bugs, action) => {
       bugs.list.push(action.payload);
     },
-
+    
     // resolveBug (command) - bugResolved (event)
     bugResolved: (bugs, action) => {
       const index = bugs.list.findIndex(bug => bug.id === action.payload.id);
       bugs.list[index].resolved = true;
     }
   }
+  
 });
 
 export const {
@@ -85,7 +85,7 @@ export const addBug = bug =>
 
 export const resolveBug = id =>
   apiCallBegan({
-    // /bugs
+    // bugs
     // PATCH /bugs/1
     url: url + "/" + id,
     method: "patch",

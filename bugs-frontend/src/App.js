@@ -5,6 +5,7 @@ import Bugs from "./components/Bugs";
 import configureStore from "./store/configureStore";
 import { Provider } from "react-redux";
 import BugsList from "./components/BugsList";
+import Items from "./components/addItems";
 
 const store = configureStore();
 
@@ -12,6 +13,7 @@ function App() {
   return (
     <Provider store={store}>
       <BugsList />
+      <Items />
     </Provider>
   );
 }

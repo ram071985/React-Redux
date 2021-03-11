@@ -5,7 +5,7 @@ import { loadBugs, getUnresolvedBugs, resolveBug } from "../store/bugs";
 const BugsList = () => {
   const dispatch = useDispatch();
   const bugs = useSelector(getUnresolvedBugs);
-
+  console.log(bugs)
   useEffect(() => {
     dispatch(loadBugs());
   }, []);
