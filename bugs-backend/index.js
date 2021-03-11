@@ -22,6 +22,14 @@ app.get("/api/items", (req, res) => {
   res.json(items);
 });
 
+app.post("/api/items", (req, res) => {
+  const lastId = items[items.length - 1];
+  let increment = lastId.id + 1;
+  const item = { id: increment, description: "Item " + increment};
+  items.push(item);
+  console.log(item);
+});
+
 app.get("/api/bugs", (req, res) => {
   res.json(bugs);
 });
